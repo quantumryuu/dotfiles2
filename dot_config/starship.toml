@@ -2,12 +2,14 @@ format = """
 [](#9A348E)\
 $os\
 $username\
-[](fg:#9A348E bg:#33658A)\
-$time\
-[](fg:#33658A bg:#DA627D)\
+[](bg:#DA627D fg:#9A348E)\
 $directory\
-[](fg:#DA627D)\
-
+[](fg:#DA627D bg:#FCA17D)\
+$git_branch\
+$git_status\
+[](fg:#FCA17D bg:#33658A)\
+$time\
+[ ](fg:#33658A)\
 """
 
 # Disable the blank line at the start of the prompt
@@ -24,14 +26,16 @@ disabled = false
 
 # An alternative to the username module which displays a symbol that
 # represents the current operating system
+[os.symbols]
+Windows = "⚡"
 [os]
 style = "bg:#9A348E"
-disabled = true # Disabled by default
+disabled = false # Disabled by default
 
 [directory]
 style = "bg:#DA627D"
 format = "[ $path ]($style)"
-truncation_length = 3
+truncation_length = 2
 truncation_symbol = "…/"
 
 # Here is how you can shorten some long paths by text replacement
@@ -47,13 +51,18 @@ truncation_symbol = "…/"
 # So either put "Important Documents" before "Documents" or use the substituted version:
 # "Important 󰈙 " = " 󰈙 "
 
-[time]
-disabled = true
-time_format = "%R" # Hour:Minute Format
-style = "bg:#33658A"
-format = '[ $time ]($style)'
 
 [git_branch]
-symbol = '🌱 '
-truncation_length = 4
-truncation_symbol = ''
+symbol = ""
+style = "bg:#FCA17D"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = "bg:#FCA17D"
+format = '[$all_status$ahead_behind ]($style)'
+
+[time]
+disabled = false
+time_format = "%T" # Hour:Minute Format
+style = "bg:#33658A"
+format = '[ $time ]($style)'
