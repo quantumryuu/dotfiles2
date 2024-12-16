@@ -1,8 +1,4 @@
 #Functions
-Function Ex { 
-    Exit 
-}
-
 Function Get-Ips {
     $Publicip = (Curl Icanhazip.Com).Content
     $Localip = (Get-Netipaddress | Where-Object { $_.Addressstate -Eq "Preferred" -And $_.Validlifetime -Lt "24:00:00" }).Ipaddress
@@ -11,13 +7,6 @@ Function Get-Ips {
 
 Function Reload {
     . $Profile
-}
-
-Function Update-Dotfiles {
-    $Dotfile = (Curl Https://Raw.Githubusercontent.Com/Kristocopani/Dotfiles/Main/Windows%20terminal/Install.Ps1).Content
-    If ((Get-Content $Profile) -Ne $Dotfile) {
-        Write-Host "Same"
-    }
 }
 
 Function .. {
@@ -36,16 +25,8 @@ Function ...... {
     Set-Location ../../../../..
 }
 
-Function Scripts {
-    Set-Location ~/Projects
-}
-
-Function Temp {
-    Set-Location C:\Temp
-}
-
 # Aliases
-Set-Alias -Name Q -Value Ex
+Set-Alias -Name Q -Value "Exit"
 Set-Alias -Name C -Value "Clear"
 Set-Alias -Name Ip -Value "Get-Ips"
 Set-Alias -Name Dotfiles -Value Update-Dotfiles
@@ -63,14 +44,6 @@ Set-Psreadlineoption -Predictionsource History
 #Set-Psreadlinekeyhandler -Key Downarrow -Function Historysearchforward
 Clear
 
-
-Import-Module -Name PSReadline
-Set-PSReadLineOption -HistoryNoDuplicates
-Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
-Set-PSReadLineOption -PredictionSource History
-#Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
-#Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
-clear
 Invoke-Expression (&starship init powershell)
 function Start-PowershellSystem {
 C:\Software\PSTools\PsExec64.exe -s -i powershell.exe -accepteula
