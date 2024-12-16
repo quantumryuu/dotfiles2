@@ -1,4 +1,7 @@
 #Functions
+function ex {
+    exit
+}
 Function Get-Ips {
     $Publicip = (Curl Icanhazip.Com).Content
     $Localip = (Get-Netipaddress | Where-Object { $_.Addressstate -Eq "Preferred" -And $_.Validlifetime -Lt "24:00:00" }).Ipaddress
@@ -25,11 +28,24 @@ Function ...... {
     Set-Location ../../../../..
 }
 
+function Update-Dotfiles {
+    chezmoi update
+    
+}
+
+function Push-Dotfiles {
+    $date = Get-Date -Format "dd/MM/yyyy HH:mm"
+    $currentlocation = (get-location).Path
+    Set-Location "C:\Users\Christos\.local\share\chezmoi"
+    git add .
+    git commit -m $date
+    git push
+}
+
 # Aliases
-Set-Alias -Name Q -Value "Exit"
+Set-Alias -Name Q -Value ex
 Set-Alias -Name C -Value "Clear"
 Set-Alias -Name Ip -Value "Get-Ips"
-Set-Alias -Name Dotfiles -Value Update-Dotfiles
 Set-Alias -Name tmep -Value Temp
 Set-Alias -Name system -Value Start-PowershellSystem
 
