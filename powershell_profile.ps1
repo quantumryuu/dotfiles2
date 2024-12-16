@@ -54,6 +54,7 @@ Set-Alias -Name system -Value Start-PowershellSystem
 
 
 #Run Functions
+Import-Module Terminal-Icons
 Import-Module -Name Psreadline
 Set-Psreadlineoption -Historynoduplicates
 Set-Psreadlinekeyhandler -Key Tab -Function Menucomplete
