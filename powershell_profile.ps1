@@ -40,6 +40,7 @@ function Push-Dotfiles {
     git add .
     git commit -m $date
     git push
+    Set-Locaiton $currentlocation
 }
 
 # Aliases
