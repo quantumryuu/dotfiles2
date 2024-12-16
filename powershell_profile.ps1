@@ -35,7 +35,7 @@ Function ..... {
 Function ...... {
     Set-Location ../../../../..
 }
-
+sad
 Function Scripts {
     Set-Location ~/Projects
 }
