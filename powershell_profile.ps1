@@ -72,3 +72,6 @@ function Start-PowershellSystem {
 C:\Software\PSTools\PsExec64.exe -s -i powershell.exe -accepteula
 }
 
+function Write-Hi {
+Write-Host "Hi!"
+}
