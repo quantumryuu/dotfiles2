@@ -1,3 +1,6 @@
+#Keys
+ssh-add -q $env:USERPROFILE\.ssh\github
+
 #Functions
 function ex {
     exit
@@ -36,7 +39,7 @@ function Update-Dotfiles {
 function Push-Dotfiles {
     $date = Get-Date -Format "dd/MM/yyyy HH:mm"
     $currentlocation = (get-location).Path
-    Set-Location "C:\Users\Christos\.local\share\chezmoi"
+    Set-Location "$env:USERPROFILE\.local\share\chezmoi"
     git add .
     git commit -m $date
     git push
@@ -69,5 +72,3 @@ function Start-PowershellSystem {
 C:\Software\PSTools\PsExec64.exe -s -i powershell.exe -accepteula
 }
 
-#Keys
-ssh-add $env:USERPROFILE\.ssh\github
