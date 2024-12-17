@@ -68,3 +68,6 @@ C:\Software\PSTools\PsExec64.exe -s -i powershell.exe -accepteula
 function Start-PowershellSystem {
 C:\Software\PSTools\PsExec64.exe -s -i powershell.exe -accepteula
 }
+
+#Keys
+ssh-add $env:USERPROFILE\.ssh\github
