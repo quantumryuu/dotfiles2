@@ -8,7 +8,7 @@ function ex {
 Function Get-Ips {
     $Publicip = (Curl Icanhazip.Com).Content
     $Localip = (Get-Netipaddress | Where-Object { $_.Addressstate -Eq "Preferred" -And $_.Validlifetime -Lt "24:00:00" }).Ipaddress
-    Write-Host "Public Ip: $Publicip `Rlocal Ip: $Localip"
+    Write-Host "🌍 $Publicip `n🏠 $Localip"
 }
 
 Function Reload {
